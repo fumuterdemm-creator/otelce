@@ -4,135 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gezifix.tr - En Uygun Konaklamayı Hızlıca Bul</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-slate-50 text-slate-800 font-sans">
 
-    <!-- Header / Navbar -->
-    <header class="bg-blue-600 text-white shadow-md">
-        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold tracking-wider cursor-pointer">
-                Gezi<span class="text-yellow-300">fix.tr</span>
-            </div>
-            <nav class="hidden md:flex space-x-6 text-sm font-medium">
-                <a href="#" class="hover:text-yellow-200 transition">Ana Sayfa</a>
-                <a href="#populer" class="hover:text-yellow-200 transition">Popüler Oteller</a>
-                <a href="#nasil-calisir" class="hover:text-yellow-200 transition">Nasıl Çalışır?</a>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Hero / Arama Alanı -->
-    <section class="bg-gradient-to-r from-blue-700 to-indigo-800 text-white py-16 px-4">
-        <div class="max-w-4xl mx-auto text-center">
-            <h1 class="text-3xl md:text-5xl font-extrabold mb-4">Hayalindeki Tatili En İyi Fiyata Yakala</h1>
-            <p class="text-blue-100 text-lg mb-8">Yüzlerce oteli tek tıkla karşılaştır, bütçene en uygun konaklamayı seç.</p>
-            
-            <!-- Arama Kutusu -->
-            <div class="bg-white p-4 rounded-xl shadow-2xl text-slate-800 flex flex-col md:flex-row gap-3">
-                <input id="sehirInput" type="text" placeholder="Nereye gitmek istiyorsun? (Örn: Bodrum, Antalya)" class="flex-1 px-4 py-3 border border-slate-200 rounded-lg focus:outline-none focus:border-blue-500">
-                <input type="date" class="px-4 py-3 border border-slate-200 rounded-lg focus:outline-none focus:border-blue-500">
-                <button onclick="aramaYap()" class="bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold px-8 py-3 rounded-lg transition shadow">
-                    Otel Ara
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Nasıl Çalışır Bölümü -->
-    <section id="nasil-calisir" class="max-w-7xl mx-auto px-4 py-12 border-b border-slate-200">
-        <h2 class="text-2xl font-bold text-center mb-8 text-slate-900">Gezifix.tr İle Nasıl Tasarruf Edersiniz?</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div class="p-6 bg-white rounded-xl shadow-sm border border-slate-100">
-                <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-xl">1</div>
-                <h3 class="font-bold text-lg mb-2">Arama Yapın</h3>
-                <p class="text-sm text-slate-500">Gideceğiniz şehri ve tarihleri seçerek en popüler seçenekleri listeleyin.</p>
-            </div>
-            <div class="p-6 bg-white rounded-xl shadow-sm border border-slate-100">
-                <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-xl">2</div>
-                <h3 class="font-bold text-lg mb-2">Fiyatları Karşılaştırın</h3>
-                <p class="text-sm text-slate-500">En güvenilir rezervasyon platformlarının sunduğu teklifleri tek ekranda görün.</p>
-            </div>
-            <div class="p-6 bg-white rounded-xl shadow-sm border border-slate-100">
-                <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-xl">3</div>
-                <h3 class="font-bold text-lg mb-2">Güvenle Rezerve Edin</h3>
-                <p class="text-sm text-slate-500">En uygun fiyata yönlenerek ekstra hiçbir ücret ödemeden rezervasyonunuzu tamamlayın.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Popüler Oteller / Listeleme Alanı -->
-    <main id="populer" class="max-w-7xl mx-auto px-4 py-12">
-        <h2 class="text-2xl font-bold mb-6 text-slate-900">En Çok Tercih Edilen Popüler Rotalar</h2>
-        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <!-- Kart 1 -->
-            <div class="bg-white rounded-xl shadow-md overflow-hidden border border-slate-100 hover:shadow-lg transition">
-                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80" alt="Antalya Otelleri" class="w-full h-48 object-cover">
-                <div class="p-5">
-                    <span class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded font-semibold">Antalya / Alanya</span>
-                    <h3 class="font-bold text-lg mt-2 mb-1">Grand Sunset Resort & Spa</h3>
-                    <p class="text-sm text-slate-500 mb-4">Her şey dahil lüks konaklama deneyimi.</p>
-                    <div class="flex justify-between items-center">
-                        <span class="text-blue-600 font-extrabold text-lg">₺2.450'den başlayan</span>
-                        <a href="https://www.booking.com" target="_blank" rel="noopener noreferrer" class="bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2 rounded-lg font-medium transition">İncele</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Kart 2 -->
-            <div class="bg-white rounded-xl shadow-md overflow-hidden border border-slate-100 hover:shadow-lg transition">
-                <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=600&q=80" alt="Bodrum Otelleri" class="w-full h-48 object-cover">
-                <div class="p-5">
-                    <span class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded font-semibold">Muğla / Bodrum</span>
-                    <h3 class="font-bold text-lg mt-2 mb-1">Marina Boutique Hotel</h3>
-                    <p class="text-sm text-slate-500 mb-4">Deniz manzaralı ve sakin bir tatil için ideal.</p>
-                    <div class="flex justify-between items-center">
-                        <span class="text-blue-600 font-extrabold text-lg">₺3.100'den başlayan</span>
-                        <a href="https://www.booking.com" target="_blank" rel="noopener noreferrer" class="bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2 rounded-lg font-medium transition">İncele</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Kart 3 -->
-            <div class="bg-white rounded-xl shadow-md overflow-hidden border border-slate-100 hover:shadow-lg transition">
-                <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=600&q=80" alt="Kapadokya Otelleri" class="w-full h-48 object-cover">
-                <div class="p-5">
-                    <span class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded font-semibold">Nevşehir / Kapadokya</span>
-                    <h3 class="font-bold text-lg mt-2 mb-1">Stone Cave Suites</h3>
-                    <p class="text-sm text-slate-500 mb-4">Tarihi mağara odalarda unutulmaz konaklama.</p>
-                    <div class="flex justify-between items-center">
-                        <span class="text-blue-600 font-extrabold text-lg">₺1.900'den başlayan</span>
-                        <a href="https://www.booking.com" target="_blank" rel="noopener noreferrer" class="bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2 rounded-lg font-medium transition">İncele</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-400 py-8 text-center text-sm mt-12">
-        <p>&copy; 2026 Gezifix.tr - Tüm hakları saklıdır. Güvenli rezervasyon altyapısı ile desteklenmektedir.</p>
-    </footer>
-
-    <script>
-        function aramaYap() {
-            const sehir = document.getElementById('sehirInput').value;
-            if(sehir.trim() === "") {
-                alert("Lütfen aramak istediğiniz şehri veya bölgeyi girin.");
-            } else {
-                alert(sehir + " bölgesi için otel araması yapılıyor! Travelpayouts ortaklık bağlantınız yakında aktifleşecek.");
-            }
-        }
+    <!-- Travelpayouts Affiliate Script -->
+    <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
+      (function () {
+          var script = document.createElement("script");
+          script.async = 1;
+          script.setAttribute("data-cmp-ab","2");
+          script.src = 'https://emrldtp.com/NTkzMTc2.js?t=593176';
+          document.head.appendChild(script);
+      })();
     </script>
-</body>
-</html><!DOCTYPE html>
-<html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gezifix.tr - En Uygun Konaklamayı Hızlıca Bul</title>
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -205,7 +88,7 @@
                     <p class="text-sm text-slate-500 mb-4">Her şey dahil lüks konaklama deneyimi.</p>
                     <div class="flex justify-between items-center">
                         <span class="text-blue-600 font-extrabold text-lg">₺2.450'den başlayan</span>
-                        <a href="https://www.booking.com" target="_blank" rel="noopener noreferrer" class="bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2 rounded-lg font-medium transition">İncele</a>
+                        <a href="https://tp.media/r?marker=593176&p=559&u=https%3A%2F%2Fwww.booking.com" target="_blank" rel="noopener noreferrer" class="bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2 rounded-lg font-medium transition">İncele</a>
                     </div>
                 </div>
             </div>
@@ -219,7 +102,7 @@
                     <p class="text-sm text-slate-500 mb-4">Deniz manzaralı ve sakin bir tatil için ideal.</p>
                     <div class="flex justify-between items-center">
                         <span class="text-blue-600 font-extrabold text-lg">₺3.100'den başlayan</span>
-                        <a href="https://www.booking.com" target="_blank" rel="noopener noreferrer" class="bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2 rounded-lg font-medium transition">İncele</a>
+                        <a href="https://tp.media/r?marker=593176&p=559&u=https%3A%2F%2Fwww.booking.com" target="_blank" rel="noopener noreferrer" class="bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2 rounded-lg font-medium transition">İncele</a>
                     </div>
                 </div>
             </div>
@@ -233,7 +116,7 @@
                     <p class="text-sm text-slate-500 mb-4">Tarihi mağara odalarda unutulmaz konaklama.</p>
                     <div class="flex justify-between items-center">
                         <span class="text-blue-600 font-extrabold text-lg">₺1.900'den başlayan</span>
-                        <a href="https://www.booking.com" target="_blank" rel="noopener noreferrer" class="bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2 rounded-lg font-medium transition">İncele</a>
+                        <a href="https://tp.media/r?marker=593176&p=559&u=https%3A%2F%2Fwww.booking.com" target="_blank" rel="noopener noreferrer" class="bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2 rounded-lg font-medium transition">İncele</a>
                     </div>
                 </div>
             </div>
@@ -251,7 +134,9 @@
             if(sehir.trim() === "") {
                 alert("Lütfen aramak istediğiniz şehri veya bölgeyi girin.");
             } else {
-                alert(sehir + " bölgesi için otel araması yapılıyor! Travelpayouts ortaklık bağlantınız yakında aktifleşecek.");
+                // Şehir araması yapıldığında Travelpayouts takip linkiyle yönlendirme sağlar
+                const targetUrl = "https://tp.media/r?marker=593176&p=559&u=" + encodeURIComponent("https://www.booking.com/searchresults.tr.html?ss=" + sehir);
+                window.open(targetUrl, '_blank');
             }
         }
     </script>
