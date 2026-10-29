@@ -49,15 +49,11 @@
             const query = document.getElementById('destination').value.trim();
             if(!query) return;
             
-            // Travelpayouts Marker ve Booking.com Entegrasyon Linki
-            const marker = "593176";
             const encodedQuery = encodeURIComponent(query);
-            const targetUrl = `https://www.booking.com/searchresults.tr.html?ss=${encodedQuery}`;
+            // Doğrudan Booking.com arama sayfasına yönlendirme (Marker ID ile)
+            const targetUrl = `https://www.booking.com/searchresults.tr.html?ss=${encodedQuery}&aid=593176`;
             
-            // Travelpayouts Click URL üzerinden yönlendirme
-            const finalLink = `https://tp.media/r?marker=${marker}&p=559&u=${encodeURIComponent(targetUrl)}`;
-            
-            window.open(finalLink, '_blank');
+            window.open(targetUrl, '_blank');
         }
     </script>
 </body>
