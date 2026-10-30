@@ -12,7 +12,16 @@
     <!-- Header -->
     <header class="bg-white shadow-sm py-4 px-6 flex justify-between items-center">
         <div class="text-2xl font-black text-blue-600 tracking-tight">gezifix<span class="text-yellow-500">.tr</span></div>
-        <div class="text-sm font-medium text-slate-500">Güvenilir Otel Karşılaştırma</div>
+        
+        <!-- Üye Girişi ve Kayıt Butonları -->
+        <div class="flex items-center space-x-3">
+            <button onclick="toggleModal('loginModal')" class="text-sm font-medium text-slate-600 hover:text-blue-600 px-3 py-2 rounded-lg transition duration-200">
+                Giriş Yap
+            </button>
+            <button onclick="toggleModal('registerModal')" class="text-sm font-medium bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg shadow-sm transition duration-200">
+                Üye Ol
+            </button>
+        </div>
     </header>
 
     <!-- Hero Section -->
@@ -42,18 +51,96 @@
         &copy; 2026 Gezifix.tr - Tüm hakları saklıdır.
     </footer>
 
-    <!-- Yönlendirme Scripti -->
+    <!-- Giriş Yap Modalı -->
+    <div id="loginModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center hidden z-50 px-4">
+        <div class="bg-white w-full max-w-md rounded-2xl p-6 shadow-2xl relative">
+            <button onclick="toggleModal('loginModal')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600">
+                ✕
+            </button>
+            <h2 class="text-2xl font-bold text-slate-900 mb-2">Giriş Yap</h2>
+            <p class="text-xs text-slate-500 mb-6">Hesabınıza erişmek için bilgilerinizi girin.</p>
+            <form onsubmit="handleAuth(event, 'Giriş başarılı!')" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">E-Posta Adresi</label>
+                    <input type="email" required placeholder="ornek@mail.com" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Şifre</label>
+                    <input type="password" required placeholder="••••••••" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm">
+                </div>
+                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg text-sm transition duration-200">
+                    Giriş Yap
+                </button>
+            </form>
+            <p class="text-xs text-center text-slate-500 mt-4">
+                Hesabınız yok mu? <a href="#" onclick="switchModal('loginModal', 'registerModal')" class="text-blue-600 font-semibold underline">Üye Olun</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Üye Ol Modalı -->
+    <div id="registerModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center hidden z-50 px-4">
+        <div class="bg-white w-full max-w-md rounded-2xl p-6 shadow-2xl relative">
+            <button onclick="toggleModal('registerModal')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600">
+                ✕
+            </button>
+            <h2 class="text-2xl font-bold text-slate-900 mb-2">Üye Ol</h2>
+            <p class="text-xs text-slate-500 mb-6">Fırsatları kaçırmamak için hemen ücretsiz hesap oluşturun.</p>
+            <form onsubmit="handleAuth(event, 'Üyelik başarıyla oluşturuldu!')" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Ad Soyad</label>
+                    <input type="text" required placeholder="Adınız Soyadınız" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">E-Posta Adresi</label>
+                    <input type="email" required placeholder="ornek@mail.com" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Şifre</label>
+                    <input type="password" required placeholder="••••••••" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm">
+                </div>
+                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg text-sm transition duration-200">
+                    Hesap Oluştur
+                </button>
+            </form>
+            <p class="text-xs text-center text-slate-500 mt-4">
+                Zaten hesabınız var mı? <a href="#" onclick="switchModal('registerModal', 'loginModal')" class="text-blue-600 font-semibold underline">Giriş Yapın</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Scriptler -->
     <script>
+        // Arama yönlendirmesi
         function redirectToBooking(event) {
             event.preventDefault();
             const query = document.getElementById('destination').value.trim();
             if(!query) return;
             
             const encodedQuery = encodeURIComponent(query);
-            // Doğrudan Booking.com arama sayfasına yönlendirme (Marker ID ile)
-            const targetUrl = `https://www.booking.com/searchresults.tr.html?ss=${encodedQuery}&aid=593176`;
+            const targetUrl = `https://www.booking.com/searchresults.tr.html?ss=${encodedQuery}&label=affnettp-593176`;
             
             window.open(targetUrl, '_blank');
+        }
+
+        // Modal açma / kapatma
+        function toggleModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.toggle('hidden');
+        }
+
+        // Modallar arası geçiş
+        function switchModal(closeId, openId) {
+            toggleModal(closeId);
+            toggleModal(openId);
+        }
+
+        // Geçici Üyelik / Giriş Bildirimi
+        function handleAuth(event, message) {
+            event.preventDefault();
+            alert(message);
+            toggleModal('loginModal');
+            toggleModal('registerModal');
         }
     </script>
 </body>
