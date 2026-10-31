@@ -26,7 +26,7 @@
         .btn-register:hover { background: #1d4ed8; }
 
         /* Kullanıcı Oturum Alanı */
-        .user-profile { display: none; align-items: center; gap: 10px; position: relative; }
+        .user-profile { display: none; align-items: center; gap: 10px; }
         .user-avatar { width: 36px; height: 36px; background: #e0e7ff; color: #4338ca; font-weight: 800; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; }
         .user-name { font-size: 14px; font-weight: 700; color: #0f172a; }
         .btn-logout { background: #f1f5f9; border: none; color: #64748b; font-size: 12px; font-weight: 600; padding: 6px 10px; border-radius: 6px; cursor: pointer; }
@@ -44,10 +44,10 @@
         .form-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 12px; margin-bottom: 16px; }
         @media (max-width: 768px) { .form-grid { grid-template-columns: 1fr; } }
         
-        .input-group { position: relative; }
-        .input-group input { width: 100%; padding: 14px 14px 14px 42px; border-radius: 12px; border: 1px solid #cbd5e1; font-size: 14px; outline: none; background: #ffffff; font-family: inherit; }
+        .input-group { position: relative; width: 100%; }
+        .input-group input { width: 100%; padding: 14px 14px 14px 42px; border-radius: 12px; border: 1px solid #cbd5e1; font-size: 14px; outline: none; background: #ffffff; color: #0f172a; font-family: inherit; }
         .input-group input:focus { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15); }
-        .input-icon { position: absolute; left: 14px; top: 15px; color: #94a3b8; width: 18px; height: 18px; }
+        .input-icon { position: absolute; left: 14px; top: 15px; color: #94a3b8; width: 18px; height: 18px; pointer-events: none; }
 
         .btn-search { width: 100%; background: #2563eb; color: #ffffff; font-size: 15px; font-weight: 700; padding: 16px; border-radius: 12px; border: none; cursor: pointer; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25); transition: 0.2s; }
         .btn-search:hover { background: #1d4ed8; }
@@ -88,42 +88,4 @@
 
     <!-- Header -->
     <header>
-        <a href="/" class="logo">
-            <div class="logo-icon">
-                <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                </svg>
-            </div>
-            <div>
-                <span class="logo-text">gezi<span>fix</span></span>
-                <span class="logo-badge">tr</span>
-            </div>
-        </a>
-        
-        <!-- Giriş Yapılmamışsa Görünecek Butonlar -->
-        <div id="authButtons" class="auth-buttons">
-            <button onclick="openModal('loginModal')" class="btn-login">Giriş Yap</button>
-            <button onclick="openModal('registerModal')" class="btn-register">Üye Ol</button>
-        </div>
-
-        <!-- Giriş Yapılınca Görünecek Kullanıcı Alanı -->
-        <div id="userProfile" class="user-profile">
-            <div class="user-avatar" id="avatarLetter">A</div>
-            <span class="user-name" id="displayName">Ahmet Y.</span>
-            <button onclick="logoutUser()" class="btn-logout">Çıkış Yap</button>
-        </div>
-    </header>
-
-    <!-- Main Content -->
-    <main>
-        <!-- Hero Section -->
-        <div class="hero-card">
-            <h1 class="hero-title">Hayalindeki Tatili En Uygun Fiyata Bul</h1>
-            <p class="hero-desc">Yüzlerce oteli tek tıkla karşılaştır, bütçene en uygun seçeneği yakala.</p>
-            
-            <form id="searchForm" onsubmit="redirectToBooking(event)">
-                <div class="form-grid">
-                    <!-- Destinasyon -->
-                    <div class="input-group">
-                        <svg class="input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.
+        <a href="/" class
