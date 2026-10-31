@@ -25,6 +25,13 @@
         .btn-register { background: #2563eb; color: #ffffff; border: none; font-size: 14px; font-weight: 700; padding: 10px 18px; border-radius: 12px; cursor: pointer; box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2); }
         .btn-register:hover { background: #1d4ed8; }
 
+        /* Kullanıcı Oturum Alanı */
+        .user-profile { display: none; align-items: center; gap: 10px; position: relative; }
+        .user-avatar { width: 36px; height: 36px; background: #e0e7ff; color: #4338ca; font-weight: 800; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+        .user-name { font-size: 14px; font-weight: 700; color: #0f172a; }
+        .btn-logout { background: #f1f5f9; border: none; color: #64748b; font-size: 12px; font-weight: 600; padding: 6px 10px; border-radius: 6px; cursor: pointer; }
+        .btn-logout:hover { background: #fee2e2; color: #ef4444; }
+
         /* Main Container */
         main { max-width: 1000px; margin: 0 auto; width: 100%; padding: 40px 16px; flex-grow: 1; }
         
@@ -61,18 +68,20 @@
         /* Footer */
         footer { background: #ffffff; border-top: 1px solid #f1f5f9; padding: 20px; text-align: center; font-size: 12px; color: #94a3b8; }
 
-        /* Modal */
-        .modal-overlay { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.5); backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center; z-index: 50; padding: 16px; }
-        .modal-overlay.hidden { display: none; }
-        .modal-box { background: #ffffff; width: 100%; max-width: 400px; border-radius: 20px; padding: 24px; position: relative; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
-        .modal-close { position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 18px; color: #94a3b8; cursor: pointer; }
-        .modal-title { font-size: 20px; font-weight: 800; margin-bottom: 4px; color: #0f172a; }
-        .modal-desc { font-size: 12px; color: #64748b; margin-bottom: 20px; }
-        .modal-form label { display: block; font-size: 11px; font-weight: 700; color: #475569; margin-bottom: 4px; }
-        .modal-form input { width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 13px; margin-bottom: 12px; outline: none; }
-        .modal-btn { width: 100%; background: #2563eb; color: #fff; border: none; padding: 12px; border-radius: 8px; font-weight: 700; font-size: 14px; cursor: pointer; margin-top: 8px; }
-        .modal-footer { font-size: 12px; text-align: center; color: #64748b; margin-top: 16px; }
-        .modal-footer a { color: #2563eb; font-weight: 700; text-decoration: underline; }
+        /* Modals */
+        .modal-overlay { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.5); backdrop-filter: blur(4px); display: none; align-items: center; justify-content: center; z-index: 100; padding: 16px; }
+        .modal-overlay.active { display: flex !important; }
+        .modal-box { background: #ffffff; width: 100%; max-width: 400px; border-radius: 20px; padding: 28px; position: relative; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
+        .modal-close { position: absolute; top: 18px; right: 18px; background: none; border: none; font-size: 18px; color: #94a3b8; cursor: pointer; }
+        .modal-title { font-size: 22px; font-weight: 800; margin-bottom: 4px; color: #0f172a; }
+        .modal-desc { font-size: 13px; color: #64748b; margin-bottom: 20px; }
+        .modal-form label { display: block; font-size: 12px; font-weight: 700; color: #475569; margin-bottom: 6px; }
+        .modal-form input { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #cbd5e1; font-size: 14px; margin-bottom: 14px; outline: none; font-family: inherit; }
+        .modal-form input:focus { border-color: #2563eb; }
+        .modal-btn { width: 100%; background: #2563eb; color: #fff; border: none; padding: 14px; border-radius: 10px; font-weight: 700; font-size: 14px; cursor: pointer; margin-top: 6px; }
+        .modal-btn:hover { background: #1d4ed8; }
+        .modal-footer { font-size: 13px; text-align: center; color: #64748b; margin-top: 18px; }
+        .modal-footer a { color: #2563eb; font-weight: 700; text-decoration: underline; cursor: pointer; }
     </style>
 </head>
 <body>
@@ -92,9 +101,17 @@
             </div>
         </a>
         
-        <div class="auth-buttons">
-            <button onclick="toggleModal('loginModal')" class="btn-login">Giriş Yap</button>
-            <button onclick="toggleModal('registerModal')" class="btn-register">Üye Ol</button>
+        <!-- Giriş Yapılmamışsa Görünecek Butonlar -->
+        <div id="authButtons" class="auth-buttons">
+            <button onclick="openModal('loginModal')" class="btn-login">Giriş Yap</button>
+            <button onclick="openModal('registerModal')" class="btn-register">Üye Ol</button>
+        </div>
+
+        <!-- Giriş Yapılınca Görünecek Kullanıcı Alanı -->
+        <div id="userProfile" class="user-profile">
+            <div class="user-avatar" id="avatarLetter">A</div>
+            <span class="user-name" id="displayName">Ahmet Y.</span>
+            <button onclick="logoutUser()" class="btn-logout">Çıkış Yap</button>
         </div>
     </header>
 
@@ -109,37 +126,4 @@
                 <div class="form-grid">
                     <!-- Destinasyon -->
                     <div class="input-group">
-                        <svg class="input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
-                        <input type="text" id="destination" required placeholder="Nereye gitmek istersin?">
-                    </div>
-
-                    <!-- Giriş Tarihi -->
-                    <div class="input-group">
-                        <svg class="input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                        <input type="date" id="checkin" required>
-                    </div>
-
-                    <!-- Çıkış Tarihi -->
-                    <div class="input-group">
-                        <svg class="input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                        <input type="date" id="checkout" required>
-                    </div>
-                </div>
-
-                <button type="submit" class="btn-search">Otel Ara & Fiyatları Karşılaştır 🚀</button>
-            </form>
-        </div>
-
-        <!-- Popüler Otel & Destinasyon Kartları -->
-        <div>
-            <h2 class="section-title">🔥 Popüler Destinasyonlar & Önerilen Oteller</h2>
-            <div class="cards-grid">
-                
-                <div onclick="quickSearch('Bodrum')" class="card">
-                    <div class="card-img"><img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=400&q=80" alt="Bodrum"></div>
-                    <div class="card-title">Bodrum Otelleri</div>
-                    <div class="card-desc">Ege'nin kalbinde tatil</div>
-                </div>
-
-                <div onclick="quickSearch('Antalya')" class="card">
-                    <div class="card-img"><img src="
+                        <svg class="input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.
