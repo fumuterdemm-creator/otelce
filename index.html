@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gezifix.tr - Canlı Otel Arama & Karşılaştırma</title>
+    <title>Gezifix.tr - Otel Rezervasyon & Seyahat Portalı</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -40,18 +40,27 @@
         .dropdown-item.logout { color: #ef4444; }
 
         /* Main */
-        main { max-width: 1050px; margin: 0 auto; width: 100%; padding: 40px 16px; flex-grow: 1; }
-        .hero-card { background: #ffffff; border-radius: 24px; padding: 32px; border: 1px solid #e2e8f0; text-align: center; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05); margin-bottom: 32px; }
-        .hero-title { font-size: 28px; font-weight: 900; color: #0f172a; margin-bottom: 8px; }
-        .hero-desc { font-size: 14px; color: #64748b; margin-bottom: 24px; }
+        main { max-width: 1050px; margin: 0 auto; width: 100%; padding: 30px 16px; flex-grow: 1; }
         
-        .form-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 12px; margin-bottom: 16px; }
-        @media (max-width: 768px) { .form-grid { grid-template-columns: 1fr; } }
+        /* Sekmeler (Yurt İçi / Yurt Dışı) */
+        .search-tabs { display: flex; gap: 8px; margin-bottom: 16px; }
+        .tab-btn { background: #e2e8f0; border: none; padding: 10px 20px; border-radius: 12px; font-weight: 700; font-size: 14px; color: #475569; cursor: pointer; transition: 0.2s; }
+        .tab-btn.active { background: #2563eb; color: #ffffff; box-shadow: 0 4px 10px rgba(37,99,235,0.2); }
+
+        /* Hero Card */
+        .hero-card { background: #ffffff; border-radius: 24px; padding: 28px; border: 1px solid #e2e8f0; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05); margin-bottom: 32px; }
+        .hero-title { font-size: 26px; font-weight: 900; color: #0f172a; margin-bottom: 6px; }
+        .hero-desc { font-size: 14px; color: #64748b; margin-bottom: 20px; }
+        
+        /* Form Grid - Kapsamlı (Destinasyon, Tarih, Oda, Kişi) */
+        .form-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+        @media (max-width: 900px) { .form-grid { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
         
         .input-group { position: relative; width: 100%; }
-        .input-group input { width: 100%; padding: 14px 14px 14px 42px; border-radius: 12px; border: 1px solid #cbd5e1; font-size: 14px; outline: none; background: #ffffff; color: #0f172a; font-family: inherit; }
-        .input-group input:focus { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15); }
-        .input-icon { position: absolute; left: 14px; top: 15px; color: #94a3b8; width: 18px; height: 18px; pointer-events: none; }
+        .input-group input, .input-group select { width: 100%; padding: 14px 14px 14px 38px; border-radius: 12px; border: 1px solid #cbd5e1; font-size: 13px; outline: none; background: #ffffff; color: #0f172a; font-family: inherit; }
+        .input-group input:focus, .input-group select:focus { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15); }
+        .input-icon { position: absolute; left: 12px; top: 15px; color: #94a3b8; width: 16px; height: 16px; pointer-events: none; }
 
         .btn-search { width: 100%; background: #2563eb; color: #ffffff; font-size: 15px; font-weight: 700; padding: 16px; border-radius: 12px; border: none; cursor: pointer; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25); transition: 0.2s; }
         .btn-search:hover { background: #1d4ed8; }
@@ -62,13 +71,17 @@
         .nights-badge { background: #e0e7ff; color: #3730a3; font-size: 12px; font-weight: 700; padding: 6px 12px; border-radius: 20px; }
 
         .hotels-list { display: flex; flex-direction: column; gap: 20px; margin-bottom: 40px; }
-        .hotel-item { background: #ffffff; border-radius: 20px; border: 1px solid #e2e8f0; overflow: hidden; display: grid; grid-template-columns: 280px 1fr; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03); transition: 0.2s; }
+        .hotel-item { background: #ffffff; border-radius: 20px; border: 1px solid #e2e8f0; overflow: hidden; display: grid; grid-template-columns: 280px 1fr; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03); transition: 0.2s; position: relative; }
         .hotel-item:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08); }
         @media (max-width: 768px) { .hotel-item { grid-template-columns: 1fr; } }
 
-        .hotel-img { height: 100%; min-height: 200px; position: relative; background: #f1f5f9; }
+        .hotel-img { height: 100%; min-height: 200px; position: relative; }
         .hotel-img img { width: 100%; height: 100%; object-fit: cover; }
         .hotel-tag { position: absolute; top: 12px; left: 12px; background: rgba(15, 23, 42, 0.85); color: #fff; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 8px; backdrop-filter: blur(4px); }
+        
+        .fav-btn { position: absolute; top: 12px; right: 12px; background: rgba(255,255,255,0.9); border: none; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 16px; transition: 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .fav-btn:hover { transform: scale(1.1); }
+        .fav-btn.active { color: #ef4444; }
 
         .hotel-content { padding: 24px; display: flex; flex-direction: column; justify-content: space-between; }
         .hotel-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
@@ -87,22 +100,25 @@
         .btn-book { background: #0f172a; color: #ffffff; border: none; padding: 12px 24px; border-radius: 12px; font-weight: 700; font-size: 14px; cursor: pointer; transition: 0.2s; }
         .btn-book:hover { background: #2563eb; }
 
-        /* Loader */
-        .loading-box { text-align: center; padding: 50px; background: #fff; border-radius: 20px; border: 1px solid #e2e8f0; font-weight: 700; color: #2563eb; }
-
         /* Footer */
         footer { background: #ffffff; border-top: 1px solid #f1f5f9; padding: 20px; text-align: center; font-size: 12px; color: #94a3b8; margin-top: 40px; }
 
         /* Modals */
         .modal-overlay { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.5); backdrop-filter: blur(4px); display: none; align-items: center; justify-content: center; z-index: 100; padding: 16px; }
         .modal-overlay.active { display: flex !important; }
-        .modal-box { background: #ffffff; width: 100%; max-width: 440px; border-radius: 20px; padding: 28px; position: relative; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
+        .modal-box { background: #ffffff; width: 100%; max-width: 440px; border-radius: 20px; padding: 28px; position: relative; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); max-height: 90vh; overflow-y: auto; }
         .modal-close { position: absolute; top: 18px; right: 18px; background: none; border: none; font-size: 18px; color: #94a3b8; cursor: pointer; }
         .modal-title { font-size: 22px; font-weight: 800; margin-bottom: 4px; color: #0f172a; }
         .modal-desc { font-size: 13px; color: #64748b; margin-bottom: 20px; }
         .modal-form label { display: block; font-size: 12px; font-weight: 700; color: #475569; margin-bottom: 6px; }
-        .modal-form input { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #cbd5e1; font-size: 14px; margin-bottom: 14px; outline: none; font-family: inherit; }
+        .modal-form input, .modal-form select { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #cbd5e1; font-size: 14px; margin-bottom: 14px; outline: none; font-family: inherit; }
         .modal-btn { width: 100%; background: #2563eb; color: #fff; border: none; padding: 14px; border-radius: 10px; font-weight: 700; font-size: 14px; cursor: pointer; margin-top: 6px; }
+        .modal-footer { font-size: 13px; text-align: center; color: #64748b; margin-top: 18px; }
+        .modal-footer a { color: #2563eb; font-weight: 700; text-decoration: underline; cursor: pointer; }
+
+        .booking-summary-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px; margin-bottom: 16px; }
+        .summary-row { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 8px; color: #475569; }
+        .summary-row.total { font-weight: 800; color: #0f172a; font-size: 15px; border-top: 1px dashed #cbd5e1; padding-top: 8px; margin-top: 8px; }
     </style>
 </head>
 <body>
@@ -111,10 +127,7 @@
     <header>
         <a href="/" class="logo">
             <div class="logo-icon">
-                <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                </svg>
+                <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
             </div>
             <div>
                 <span class="logo-text">gezi<span>fix</span></span>
@@ -137,259 +150,45 @@
             <div id="userDropdown" class="user-dropdown">
                 <button onclick="openProfileModal()" class="dropdown-item">👤 Profilim & Ayarlar</button>
                 <button onclick="openReservationsModal()" class="dropdown-item">🧳 Rezervasyonlarım</button>
+                <button onclick="openFavoritesModal()" class="dropdown-item">❤️ Favori Otellerim</button>
                 <div class="dropdown-divider"></div>
                 <button onclick="logoutUser()" class="dropdown-item logout">🚪 Çıkış Yap</button>
             </div>
         </div>
     </header>
 
+    <!-- Main -->
     <main>
+        <!-- Sekmeler -->
+        <div class="search-tabs">
+            <button class="tab-btn active" id="tabDomestic" onclick="switchTab('domestic')">🇹🇷 Yurt İçi Oteller</button>
+            <button class="tab-btn" id="tabInternational" onclick="switchTab('international')">🌍 Yurt Dışı Oteller</button>
+        </div>
+
+        <!-- Hero Card & Form -->
         <div class="hero-card">
-            <h1 class="hero-title">Canlı Otel Fiyatları & Rezervasyon</h1>
-            <p class="hero-desc">Anlık otel verilerini sorgula, en uygun fiyatlı konaklamayı yakala.</p>
+            <h1 class="hero-title" id="heroTitle">Türkiye'nin En İyi Otellerini Keşfet</h1>
+            <p class="hero-desc">Binlerce tesis arasından bütçene en uygun oteli seç, anında rezervasyon yap.</p>
             
-            <form id="searchForm" onsubmit="handleLiveSearch(event)">
+            <form id="searchForm" onsubmit="executeSearch(event)">
                 <div class="form-grid">
+                    <!-- Destinasyon -->
                     <div class="input-group">
                         <svg class="input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
-                        <input type="text" id="destination" placeholder="Şehir veya otel adı (örn. Ardos Park, İstanbul, Bodrum)">
+                        <input type="text" id="destination" placeholder="Şehir veya otel adı yazın...">
                     </div>
 
+                    <!-- Giriş -->
                     <div class="input-group">
                         <svg class="input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                         <input type="date" id="checkin" required>
                     </div>
 
+                    <!-- Çıkış -->
                     <div class="input-group">
                         <svg class="input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                         <input type="date" id="checkout" required>
                     </div>
-                </div>
 
-                <button type="submit" class="btn-search">Canlı Veri İle Otel Ara 🚀</button>
-            </form>
-        </div>
-
-        <div>
-            <div class="results-header">
-                <h2 class="section-title" id="resultsTitle">🏨 Öne Çıkan Oteller</h2>
-                <span class="nights-badge" id="nightsInfo">1 Gece Konaklama</span>
-            </div>
-
-            <div id="hotelsList" class="hotels-list">
-                <!-- Otel kartları buraya gelecek -->
-            </div>
-        </div>
-    </main>
-
-    <footer>
-        &copy; 2026 Gezifix.tr - Tüm hakları saklıdır.
-    </footer>
-
-    <!-- Modallar -->
-    <div id="loginModal" class="modal-overlay">
-        <div class="modal-box">
-            <button onclick="closeModal('loginModal')" class="modal-close">✕</button>
-            <h2 class="modal-title">Giriş Yap</h2>
-            <form class="modal-form" onsubmit="handleAuthSubmit(event, 'login')">
-                <label>E-Posta</label>
-                <input type="email" id="loginEmail" required placeholder="ornek@mail.com">
-                <label>Şifre</label>
-                <input type="password" required placeholder="••••••••">
-                <button type="submit" class="modal-btn">Giriş Yap</button>
-            </form>
-        </div>
-    </div>
-
-    <div id="registerModal" class="modal-overlay">
-        <div class="modal-box">
-            <button onclick="closeModal('registerModal')" class="modal-close">✕</button>
-            <h2 class="modal-title">Üye Ol</h2>
-            <form class="modal-form" onsubmit="handleAuthSubmit(event, 'register')">
-                <label>Ad Soyad</label>
-                <input type="text" id="regName" required placeholder="Ad Soyad">
-                <label>E-Posta</label>
-                <input type="email" id="regEmail" required placeholder="ornek@mail.com">
-                <label>Şifre</label>
-                <input type="password" required placeholder="••••••••">
-                <button type="submit" class="modal-btn">Kayıt Ol</button>
-            </form>
-        </div>
-    </div>
-
-    <div id="infoModal" class="modal-overlay">
-        <div class="modal-box">
-            <button onclick="closeModal('infoModal')" class="modal-close">✕</button>
-            <h2 class="modal-title" id="infoTitle">Bilgi</h2>
-            <p class="modal-desc" id="infoDesc">İçerik yükleniyor...</p>
-            <button onclick="closeModal('infoModal')" class="modal-btn">Tamam</button>
-        </div>
-    </div>
-
-    <script>
-        // RapidAPI Yapılandırması (Kendi Anahtarını Buraya Ekleyebilirsin)
-        const RAPIDAPI_KEY = "YOUR_RAPIDAPI_KEY_HERE"; 
-        
-        // Yedekli Yerel Otel Veritabanı (API Kota Dolduğunda Devreye Girer)
-        const localHotels = [
-            { id: 1, name: "Ardos Park Hotel", location: "Çankaya, Ankara", tag: "Şehir & İş Oteli", rating: 9.4, pricePerNight: 2400, image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80", features: ["Ücretsiz Wi-Fi", "Kahvaltı Dahil", "Otopark"] },
-            { id: 2, name: "Bodrum Luxury Resort & Spa", location: "Yalıkavak, Bodrum", tag: "Lüks Tatil", rating: 9.6, pricePerNight: 4800, image: "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=600&q=80", features: ["Denize Sıfır", "Her Şey Dahil", "Spa Center"] },
-            { id: 3, name: "Antalya Akdeniz Resort", location: "Lara, Antalya", tag: "Popüler Resort", rating: 9.1, pricePerNight: 3500, image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=600&q=80", features: ["Açık Havuz", "Açık Büfe", "Fitness"] }
-        ];
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const checkin = document.getElementById('checkin');
-            const checkout = document.getElementById('checkout');
-            const today = new Date();
-            const tomorrow = new Date(today);
-            tomorrow.setDate(tomorrow.getDate() + 1);
-
-            checkin.value = today.toISOString().split('T')[0];
-            checkout.value = tomorrow.toISOString().split('T')[0];
-
-            const savedUser = localStorage.getItem('gezifix_user_name');
-            if(savedUser) showLoggedInUser(savedUser);
-
-            renderHotels(localHotels);
-        });
-
-        function calculateNights() {
-            const checkinVal = new Date(document.getElementById('checkin').value);
-            const checkoutVal = new Date(document.getElementById('checkout').value);
-            const diffDays = Math.ceil(Math.abs(checkoutVal - checkinVal) / (1000 * 60 * 60 * 24));
-            return diffDays > 0 ? diffDays : 1;
-        }
-
-        // RapidAPI Canlı Veri Çekme Motoru
-        async function handleLiveSearch(event) {
-            if(event) event.preventDefault();
-            const query = document.getElementById('destination').value.trim();
-            const container = document.getElementById('hotelsList');
-            
-            if(!query) {
-                renderHotels(localHotels);
-                return;
-            }
-
-            container.innerHTML = `<div class="loading-box">🔄 Canlı otel ve fiyat verileri çekiliyor, lütfen bekleyin...</div>`;
-
-            // Eğer RapidAPI Anahtarı girilmediyse veya yerel arama istenirse Otomatik Fallback yap
-            if(RAPIDAPI_KEY === "YOUR_RAPIDAPI_KEY_HERE") {
-                setTimeout(() => {
-                    const filtered = localHotels.filter(h => h.name.toLowerCase().includes(query.toLowerCase()) || h.location.toLowerCase().includes(query.toLowerCase()));
-                    renderHotels(filtered.length ? filtered : localHotels);
-                    document.getElementById('resultsTitle').textContent = `🔎 "${query.toUpperCase()}" İçin Sonuçlar (Yerel Mod)`;
-                }, 800);
-                return;
-            }
-
-            // RapidAPI Canlı Fetch İsteği
-            try {
-                const response = await fetch(`https://booking-com.p.rapidapi.com/v1/hotels/search-by-name?name=${encodeURIComponent(query)}&locale=tr`, {
-                    method: 'GET',
-                    headers: {
-                        'x-rapidapi-key': RAPIDAPI_KEY,
-                        'x-rapidapi-host': 'booking-com.p.rapidapi.com'
-                    }
-                });
-                
-                const data = await response.json();
-                
-                if(data && data.length > 0) {
-                    const apiHotels = data.map((item, index) => ({
-                        id: index + 100,
-                        name: item.hotel_name || "Özel Otel",
-                        location: item.address || query,
-                        tag: "Canlı Veri",
-                        rating: item.review_score || 9.0,
-                        pricePerNight: Math.floor(Math.random() * 2000) + 2000,
-                        image: item.max_photo_url || "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80",
-                        features: ["Canlı Fiyat", "Anlık Onay", "Merkezi"]
-                    }));
-                    renderHotels(apiHotels);
-                } else {
-                    renderHotels(localHotels);
-                }
-            } catch (err) {
-                console.error("API Hatası:", err);
-                renderHotels(localHotels);
-            }
-        }
-
-        function renderHotels(list) {
-            const container = document.getElementById('hotelsList');
-            const nights = calculateNights();
-            document.getElementById('nightsInfo').textContent = `${nights} Gece Konaklama`;
-            container.innerHTML = '';
-
-            list.forEach(hotel => {
-                const totalPrice = hotel.pricePerNight * nights;
-                const card = document.createElement('div');
-                card.className = 'hotel-item';
-                card.innerHTML = `
-                    <div class="hotel-img">
-                        <img src="${hotel.image}" alt="${hotel.name}">
-                        <span class="hotel-tag">${hotel.tag}</span>
-                    </div>
-                    <div class="hotel-content">
-                        <div>
-                            <div class="hotel-top">
-                                <div>
-                                    <h3 class="hotel-title">${hotel.name}</h3>
-                                    <div class="hotel-location">📍 ${hotel.location}</div>
-                                </div>
-                                <span class="hotel-rating">★ ${hotel.rating}</span>
-                            </div>
-                            <div class="hotel-features">
-                                ${hotel.features.map(f => `<span class="feature-chip">${f}</span>`).join('')}
-                            </div>
-                        </div>
-                        <div class="hotel-bottom">
-                            <div>
-                                <div class="price-label">Gecelik Fiyat</div>
-                                <div class="price-amount">₺${hotel.pricePerNight.toLocaleString('tr-TR')}</div>
-                                <div class="price-total">Toplam: ₺${totalPrice.toLocaleString('tr-TR')} (${nights} Gece)</div>
-                            </div>
-                            <button onclick="openInfoModal('Rezervasyon', '${hotel.name} için canlı rezervasyon talebiniz alındı.')" class="btn-book">Rezervasyon Yap</button>
-                        </div>
-                    </div>
-                `;
-                container.appendChild(card);
-            });
-        }
-
-        /* Modal & Kullanıcı Yönetimi */
-        function openModal(id) { document.getElementById(id).classList.add('active'); }
-        function closeModal(id) { document.getElementById(id).classList.remove('active'); }
-        function toggleUserDropdown() { document.getElementById('userDropdown').classList.toggle('active'); }
-
-        function openInfoModal(title, desc) {
-            document.getElementById('infoTitle').textContent = title;
-            document.getElementById('infoDesc').textContent = desc;
-            openModal('infoModal');
-        }
-
-        function handleAuthSubmit(event, type) {
-            event.preventDefault();
-            const userName = type === 'register' ? document.getElementById('regName').value : "Ahmet Y.";
-            localStorage.setItem('gezifix_user_name', userName);
-            showLoggedInUser(userName);
-            closeModal('loginModal');
-            closeModal('registerModal');
-        }
-
-        function showLoggedInUser(name) {
-            document.getElementById('authButtons').style.display = 'none';
-            document.getElementById('userMenuContainer').style.display = 'block';
-            document.getElementById('displayName').textContent = name;
-            document.getElementById('avatarLetter').textContent = name.charAt(0).toUpperCase();
-        }
-
-        function logoutUser() {
-            localStorage.removeItem('gezifix_user_name');
-            document.getElementById('authButtons').style.display = 'flex';
-            document.getElementById('userMenuContainer').style.display = 'none';
-        }
-    </script>
-</body>
-</html>
+                    <!-- Oda Sayısı -->
+                    <div class="
