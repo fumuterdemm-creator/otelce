@@ -165,4 +165,304 @@
                     <!-- Destinasyon -->
                     <div class="input-group">
                         <svg class="input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
-                        <input type="text" id="destination" required placeholder="Nereye gitmek istersin? (örn. Bodrum veya Otel Ad
+                        <input type="text" id="destination" required placeholder="Nereye gitmek istersin? (örn. Bodrum veya Otel Adı)">
+                    </div>
+
+                    <!-- Giriş Tarihi -->
+                    <div class="input-group">
+                        <svg class="input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        <input type="date" id="checkin" required>
+                    </div>
+
+                    <!-- Çıkış Tarihi -->
+                    <div class="input-group">
+                        <svg class="input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        <input type="date" id="checkout" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-search">Otel Ara & Fiyatları Karşılaştır 🚀</button>
+            </form>
+        </div>
+
+        <!-- Popüler Kartlar -->
+        <div>
+            <h2 class="section-title">🔥 Popüler Destinasyonlar & Önerilen Oteller</h2>
+            <div class="cards-grid">
+                
+                <div onclick="quickSearch('Bodrum')" class="card">
+                    <div class="card-img"><img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=400&q=80" alt="Bodrum"></div>
+                    <div class="card-title">Bodrum Otelleri</div>
+                    <div class="card-desc">Ege'nin kalbinde tatil</div>
+                </div>
+
+                <div onclick="quickSearch('Antalya')" class="card">
+                    <div class="card-img"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=400&q=80" alt="Antalya"></div>
+                    <div class="card-title">Antalya Resortlar</div>
+                    <div class="card-desc">Her şey dahil fırsatlar</div>
+                </div>
+
+                <div onclick="quickSearch('Kapadokya')" class="card">
+                    <div class="card-img"><img src="https://images.unsplash.com/photo-1641128324972-af3212f0f6bd?auto=format&fit=crop&w=400&q=80" alt="Kapadokya"></div>
+                    <div class="card-title">Kapadokya Cave Oteller</div>
+                    <div class="card-desc">Balon manzaralı konaklama</div>
+                </div>
+
+                <div onclick="quickSearch('İstanbul')" class="card">
+                    <div class="card-img"><img src="https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?auto=format&fit=crop&w=400&q=80" alt="İstanbul"></div>
+                    <div class="card-title">İstanbul Butik Oteller</div>
+                    <div class="card-desc">Boğaz manzaralı konfor</div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Müşteri Yorumları Bölümü -->
+        <div>
+            <h2 class="section-title">💬 Misafirlerimiz Gezifix İçin Ne Diyor?</h2>
+            <div class="reviews-grid">
+                
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">M</div>
+                        <div>
+                            <div class="review-name">Mert Demir</div>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"Bodrum tatilim için otel ararken Gezifix üzerinden karşılaştırma yapıp Booking'de inanılmaz uygun bir fiyata rezervasyonumu tamamladım. Çok pratik!"</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">S</div>
+                        <div>
+                            <div class="review-name">Selin Yılmaz</div>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"Arayüzü son derece sade ve hızlı. Otel ismini yazıp direkt sonuçlara ulaşmak harika olmuş, favorilerim özelliğini de çok beğendim."</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">K</div>
+                        <div>
+                            <div class="review-name">Kaan Arslan</div>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"Güvenilir ve reklamsız bir arayüz arıyordum, tam bulduğum gibi çıktı. Kesinlikle tavsiye ederim, teşekkürler Gezifix."</p>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2026 Gezifix.tr - Tüm hakları saklıdır.
+    </footer>
+
+    <!-- Giriş Yap Modalı -->
+    <div id="loginModal" class="modal-overlay">
+        <div class="modal-box">
+            <button onclick="closeModal('loginModal')" class="modal-close">✕</button>
+            <h2 class="modal-title">Giriş Yap</h2>
+            <p class="modal-desc">Gezifix fırsatlarına ve favorilerine eriş.</p>
+            <form class="modal-form" onsubmit="handleAuthSubmit(event, 'login')">
+                <label>E-Posta Adresi</label>
+                <input type="email" id="loginEmail" required placeholder="ornek@mail.com">
+                <label>Şifre</label>
+                <input type="password" required placeholder="••••••••">
+                <button type="submit" class="modal-btn">Giriş Yap</button>
+            </form>
+            <p class="modal-footer">Hesabınız yok mu? <a onclick="switchModal('loginModal', 'registerModal')">Üye Olun</a></p>
+        </div>
+    </div>
+
+    <!-- Üye Ol Modalı -->
+    <div id="registerModal" class="modal-overlay">
+        <div class="modal-box">
+            <button onclick="closeModal('registerModal')" class="modal-close">✕</button>
+            <h2 class="modal-title">Üye Ol</h2>
+            <p class="modal-desc">Fırsatları kaçırmamak için ücretsiz hesap oluşturun.</p>
+            <form class="modal-form" onsubmit="handleAuthSubmit(event, 'register')">
+                <label>Ad Soyad</label>
+                <input type="text" id="regName" required placeholder="Adınız Soyadınız">
+                <label>E-Posta Adresi</label>
+                <input type="email" id="regEmail" required placeholder="ornek@mail.com">
+                <label>Şifre</label>
+                <input type="password" required placeholder="••••••••">
+                <button type="submit" class="modal-btn">Hesap Oluştur</button>
+            </form>
+            <p class="modal-footer">Zaten hesabınız var mı? <a onclick="switchModal('registerModal', 'loginModal')">Giriş Yapın</a></p>
+        </div>
+    </div>
+
+    <!-- Profil Düzenleme Modalı (İsim, E-posta, Şifre Değişimi) -->
+    <div id="profileModal" class="modal-overlay">
+        <div class="modal-box">
+            <button onclick="closeModal('profileModal')" class="modal-close">✕</button>
+            <h2 class="modal-title">Profil & Hesap Ayarları</h2>
+            <p class="modal-desc">Kişisel bilgilerinizi ve şifrenizi güncelleyin.</p>
+            <form class="modal-form" onsubmit="handleProfileUpdate(event)">
+                <label>Ad Soyad</label>
+                <input type="text" id="editName" required>
+                <label>E-Posta Adresi</label>
+                <input type="email" id="editEmail" required>
+                <label>Yeni Şifre (İsteğe bağlı)</label>
+                <input type="password" id="editPassword" placeholder="Değiştirmek istemiyorsanız boş bırakın">
+                <button type="submit" class="modal-btn">Değişiklikleri Kaydet</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bilgilendirme Modalı -->
+    <div id="infoModal" class="modal-overlay">
+        <div class="modal-box">
+            <button onclick="closeModal('infoModal')" class="modal-close">✕</button>
+            <h2 class="modal-title" id="infoTitle">Panel</h2>
+            <p class="modal-desc" id="infoDesc">İçerik yükleniyor...</p>
+            <button onclick="closeModal('infoModal')" class="modal-btn">Tamam</button>
+        </div>
+    </div>
+
+    <!-- Scriptler -->
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const checkin = document.getElementById('checkin');
+            const checkout = document.getElementById('checkout');
+            const today = new Date();
+            const tomorrow = new Date(today);
+            tomorrow.setDate(tomorrow.getDate() + 1);
+
+            checkin.value = today.toISOString().split('T')[0];
+            checkout.value = tomorrow.toISOString().split('T')[0];
+
+            const savedUser = localStorage.getItem('gezifix_user_name');
+            if(savedUser) {
+                showLoggedInUser(savedUser);
+            }
+        });
+
+        // Booking.com Doğrudan Arama Yönlendirmesi (Güncellenmiş Kesin Çözüm)
+        function redirectToBooking(event) {
+            if(event) event.preventDefault();
+            const query = document.getElementById('destination').value.trim();
+            const checkin = document.getElementById('checkin').value;
+            const checkout = document.getElementById('checkout').value;
+            
+            if(!query) return;
+            
+            const encodedQuery = encodeURIComponent(query);
+            
+            // Booking'in direkt sonuçları tetikleyen son parametre standardı
+            const targetUrl = `https://www.booking.com/searchresults.tr.html?aid=593176&lang=tr&error_url_encoded_stmt_src=1&city=-755070&redirected=1&src=index&from_index=1&ss=${encodedQuery}&checkin=${checkin}&checkout=${checkout}&group_adults=2&no_rooms=1&group_children=0`;
+            
+            window.open(targetUrl, '_blank');
+        }
+
+        function quickSearch(city) {
+            document.getElementById('destination').value = city;
+            redirectToBooking(null);
+        }
+
+        /* Modal ve Menü Yönetimi */
+        function openModal(id) {
+            document.getElementById(id).classList.add('active');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('active');
+        }
+
+        function switchModal(closeId, openId) {
+            closeModal(closeId);
+            openModal(openId);
+        }
+
+        function toggleUserDropdown() {
+            const dropdown = document.getElementById('userDropdown');
+            dropdown.classList.toggle('active');
+        }
+
+        function openInfoModal(title, desc) {
+            document.getElementById('infoTitle').textContent = title;
+            document.getElementById('infoDesc').textContent = desc;
+            document.getElementById('userDropdown').classList.remove('active');
+            openModal('infoModal');
+        }
+
+        function openProfileModal() {
+            document.getElementById('userDropdown').classList.remove('active');
+            document.getElementById('editName').value = localStorage.getItem('gezifix_user_name') || 'Ahmet Y.';
+            document.getElementById('editEmail').value = localStorage.getItem('gezifix_user_email') || 'ornek@mail.com';
+            openModal('profileModal');
+        }
+
+        /* Oturum ve Profil Güncelleme İşlemleri */
+        function handleAuthSubmit(event, type) {
+            event.preventDefault();
+            let userName = "Ahmet Y.";
+            let userEmail = "ornek@mail.com";
+
+            if(type === 'register') {
+                userName = document.getElementById('regName').value.trim() || "Ahmet Y.";
+                userEmail = document.getElementById('regEmail').value.trim() || "ornek@mail.com";
+            } else {
+                userEmail = document.getElementById('loginEmail').value.trim() || "ornek@mail.com";
+                userName = userEmail.split('@')[0];
+                userName = userName.charAt(0).toUpperCase() + userName.slice(1);
+            }
+            
+            localStorage.setItem('gezifix_user_name', userName);
+            localStorage.setItem('gezifix_user_email', userEmail);
+            
+            showLoggedInUser(userName);
+            closeModal('loginModal');
+            closeModal('registerModal');
+        }
+
+        function handleProfileUpdate(event) {
+            event.preventDefault();
+            const newName = document.getElementById('editName').value.trim();
+            const newEmail = document.getElementById('editEmail').value.trim();
+            
+            if(newName) {
+                localStorage.setItem('gezifix_user_name', newName);
+                localStorage.setItem('gezifix_user_email', newEmail);
+                showLoggedInUser(newName);
+                alert('Profil bilgileriniz başarıyla güncellendi!');
+                closeModal('profileModal');
+            }
+        }
+
+        function showLoggedInUser(name) {
+            document.getElementById('authButtons').style.display = 'none';
+            const userMenu = document.getElementById('userMenuContainer');
+            userMenu.style.display = 'block';
+            document.getElementById('displayName').textContent = name;
+            document.getElementById('avatarLetter').textContent = name.charAt(0).toUpperCase();
+        }
+
+        function logoutUser() {
+            localStorage.removeItem('gezifix_user_name');
+            localStorage.removeItem('gezifix_user_email');
+            document.getElementById('authButtons').style.display = 'flex';
+            document.getElementById('userMenuContainer').style.display = 'none';
+            document.getElementById('userDropdown').classList.remove('active');
+        }
+
+        // Dışarı tıklandığında dropdown menüyü kapat
+        window.onclick = function(event) {
+            if (!event.target.closest('.user-menu-container')) {
+                const dropdown = document.getElementById('userDropdown');
+                if (dropdown && dropdown.classList.contains('active')) {
+                    dropdown.classList.remove('active');
+                }
+            }
+        }
+    </script>
+</body>
+</html>
