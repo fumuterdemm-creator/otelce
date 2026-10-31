@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gezifix.tr - En Uygun Otel Fiyatları ve Rezervasyon</title>
+    <title>Gezifix.tr - Profesyonel Otel Rezervasyon & Yönetim Paneli</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -38,6 +38,7 @@
         .dropdown-item:hover { background: #f1f5f9; color: #2563eb; }
         .dropdown-divider { height: 1px; background: #f1f5f9; margin: 6px 0; }
         .dropdown-item.logout { color: #ef4444; }
+        .dropdown-item.admin { color: #7c3aed; font-weight: 800; }
 
         /* Main Container */
         main { max-width: 1100px; margin: 0 auto; width: 100%; padding: 32px 16px; flex-grow: 1; }
@@ -47,7 +48,7 @@
         .tab-btn { background: #e2e8f0; border: none; padding: 12px 24px; border-radius: 12px 12px 0 0; font-weight: 700; font-size: 14px; color: #475569; cursor: pointer; transition: 0.2s; }
         .tab-btn.active { background: #ffffff; color: #2563eb; border: 1px solid #e2e8f0; border-bottom: none; box-shadow: 0 -4px 10px rgba(0,0,0,0.02); }
 
-        /* Hero Card & Kapsamlı Arama Formu */
+        /* Hero Card */
         .hero-card { background: #ffffff; border-radius: 0 24px 24px 24px; padding: 36px; border: 1px solid #e2e8f0; box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.05); margin-bottom: 40px; }
         .hero-title { font-size: 30px; font-weight: 900; color: #0f172a; margin-bottom: 8px; letter-spacing: -0.5px; }
         .hero-desc { font-size: 15px; color: #64748b; margin-bottom: 28px; }
@@ -65,15 +66,7 @@
         .btn-search { width: 100%; background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #ffffff; font-size: 16px; font-weight: 800; padding: 18px; border-radius: 14px; border: none; cursor: pointer; box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3); transition: 0.2s; }
         .btn-search:hover { transform: translateY(-1px); background: linear-gradient(135deg, #1d4ed8, #1e40af); }
 
-        /* Özellikler Barı */
-        .features-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 40px; }
-        @media (max-width: 768px) { .features-bar { grid-template-columns: repeat(2, 1fr); } }
-        .feature-box { background: #ffffff; border: 1px solid #e2e8f0; padding: 18px; border-radius: 16px; display: flex; align-items: center; gap: 14px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
-        .feature-icon { width: 44px; height: 44px; background: #eff6ff; color: #2563eb; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 800; flex-shrink: 0; }
-        .feature-title { font-size: 14px; font-weight: 800; color: #0f172a; }
-        .feature-sub { font-size: 11px; color: #64748b; }
-
-        /* Sonuç Alanı & Doluluk Rozetleri */
+        /* Otel Listesi */
         .results-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
         .section-title { font-size: 22px; font-weight: 800; color: #0f172a; }
         .nights-badge { background: #e0e7ff; color: #3730a3; font-size: 13px; font-weight: 700; padding: 6px 14px; border-radius: 20px; }
@@ -86,7 +79,6 @@
         .hotel-img { height: 100%; min-height: 220px; position: relative; }
         .hotel-img img { width: 100%; height: 100%; object-fit: cover; }
         .hotel-tag { position: absolute; top: 12px; left: 12px; background: rgba(15, 23, 42, 0.85); color: #fff; font-size: 11px; font-weight: 700; padding: 5px 12px; border-radius: 8px; backdrop-filter: blur(4px); }
-        
         .occupancy-badge { position: absolute; bottom: 12px; left: 12px; background: #fee2e2; color: #991b1b; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
         
         .fav-btn { position: absolute; top: 12px; right: 12px; background: rgba(255,255,255,0.9); border: none; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 16px; transition: 0.2s; box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
@@ -116,7 +108,7 @@
         /* Modals */
         .modal-overlay { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.5); backdrop-filter: blur(4px); display: none; align-items: center; justify-content: center; z-index: 100; padding: 16px; }
         .modal-overlay.active { display: flex !important; }
-        .modal-box { background: #ffffff; width: 100%; max-width: 440px; border-radius: 20px; padding: 28px; position: relative; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); max-height: 90vh; overflow-y: auto; }
+        .modal-box { background: #ffffff; width: 100%; max-width: 500px; border-radius: 20px; padding: 28px; position: relative; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); max-height: 90vh; overflow-y: auto; }
         .modal-close { position: absolute; top: 18px; right: 18px; background: none; border: none; font-size: 18px; color: #94a3b8; cursor: pointer; }
         .modal-title { font-size: 22px; font-weight: 800; margin-bottom: 4px; color: #0f172a; }
         .modal-desc { font-size: 13px; color: #64748b; margin-bottom: 20px; }
@@ -129,6 +121,11 @@
         .booking-summary-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px; margin-bottom: 16px; }
         .summary-row { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 8px; color: #475569; }
         .summary-row.total { font-weight: 800; color: #0f172a; font-size: 15px; border-top: 1px dashed #cbd5e1; padding-top: 8px; margin-top: 8px; }
+        
+        /* Admin Tablo */
+        .admin-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 12px; }
+        .admin-table th, .admin-table td { padding: 10px; border-bottom: 1px solid #e2e8f0; text-align: left; }
+        .admin-table th { background: #f1f5f9; font-weight: 800; color: #334155; }
     </style>
 </head>
 <body>
@@ -161,6 +158,8 @@
                 <button onclick="openProfileModal()" class="dropdown-item">👤 Profilim & Ayarlar</button>
                 <button onclick="openReservationsModal()" class="dropdown-item">🧳 Rezervasyonlarım</button>
                 <button onclick="openFavoritesModal()" class="dropdown-item">❤️ Favori Otellerim</button>
+                <div id="adminMenuDivider" class="dropdown-divider" style="display:none;"></div>
+                <button id="adminPanelBtn" onclick="openAdminModal()" class="dropdown-item admin" style="display:none;">⚙️ Yönetici Paneli</button>
                 <div class="dropdown-divider"></div>
                 <button onclick="logoutUser()" class="dropdown-item logout">🚪 Çıkış Yap</button>
             </div>
@@ -169,13 +168,11 @@
 
     <!-- Main -->
     <main>
-        <!-- Sekmeler -->
         <div class="search-tabs">
             <button class="tab-btn active" id="tabDomestic" onclick="switchTab('domestic')">🇹🇷 Yurt İçi Oteller</button>
             <button class="tab-btn" id="tabInternational" onclick="switchTab('international')">🌍 Yurt Dışı Oteller</button>
         </div>
 
-        <!-- Hero Card & Form -->
         <div class="hero-card">
             <h1 class="hero-title" id="heroTitle">Türkiye'nin En İyi Otellerini Keşfet</h1>
             <p class="hero-desc" id="heroDesc">Binlerce tesis arasından bütçene en uygun oteli seç, anında rezervasyon yap.</p>
@@ -226,39 +223,6 @@
             </form>
         </div>
 
-        <!-- Özellikler Barı -->
-        <div class="features-bar">
-            <div class="feature-box">
-                <div class="feature-icon">🛡️</div>
-                <div>
-                    <div class="feature-title">Güvenli Rezervasyon</div>
-                    <div class="feature-sub">Anında doğrulama</div>
-                </div>
-            </div>
-            <div class="feature-box">
-                <div class="feature-icon">💎</div>
-                <div>
-                    <div class="feature-title">En İyi Fiyat</div>
-                    <div class="feature-sub">Ek komisyon yok</div>
-                </div>
-            </div>
-            <div class="feature-box">
-                <div class="feature-icon">📞</div>
-                <div>
-                    <div class="feature-title">7/24 Destek</div>
-                    <div class="feature-sub">Her an yanınızdayız</div>
-                </div>
-            </div>
-            <div class="feature-box">
-                <div class="feature-icon">⚡</div>
-                <div>
-                    <div class="feature-title">Hızlı Onay</div>
-                    <div class="feature-sub">Saniyeler içinde bitti</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Sonuçlar -->
         <div>
             <div class="results-header">
                 <h2 class="section-title" id="resultsTitle">🏨 Popüler Yurt İçi Oteller</h2>
@@ -278,10 +242,10 @@
         <div class="modal-box">
             <button onclick="closeModal('loginModal')" class="modal-close">✕</button>
             <h2 class="modal-title">Giriş Yap</h2>
-            <p class="modal-desc">Hesabınıza erişin ve rezervasyonlarınızı yönetin.</p>
+            <p class="modal-desc">Yönetici için e-posta kısmına <b>admin@gezifix.tr</b> yazarak Admin Paneline erişebilirsiniz.</p>
             <form class="modal-form" onsubmit="handleAuthSubmit(event, 'login')">
                 <label>E-Posta</label>
-                <input type="email" id="loginEmail" required placeholder="ornek@mail.com">
+                <input type="email" id="loginEmail" required placeholder="admin@gezifix.tr veyaornek@mail.com">
                 <label>Şifre</label>
                 <input type="password" required placeholder="••••••••">
                 <button type="submit" class="modal-btn">Giriş Yap</button>
@@ -294,7 +258,6 @@
         <div class="modal-box">
             <button onclick="closeModal('registerModal')" class="modal-close">✕</button>
             <h2 class="modal-title">Üye Ol</h2>
-            <p class="modal-desc">Hızlı rezervasyon ve favoriler için hesap oluşturun.</p>
             <form class="modal-form" onsubmit="handleAuthSubmit(event, 'register')">
                 <label>Ad Soyad</label>
                 <input type="text" id="regName" required placeholder="Adınız Soyadınız">
@@ -305,6 +268,64 @@
                 <button type="submit" class="modal-btn">Kayıt Ol</button>
             </form>
             <p class="modal-footer">Zaten hesabınız var mı? <a onclick="switchModal('registerModal', 'loginModal')">Giriş Yapın</a></p>
+        </div>
+    </div>
+
+    <!-- Yönetici Paneli Modalı -->
+    <div id="adminModal" class="modal-overlay">
+        <div class="modal-box" style="max-width: 650px;">
+            <button onclick="closeModal('adminModal')" class="modal-close">✕</button>
+            <h2 class="modal-title">⚙️ Gezifix Yönetici Paneli (Admin)</h2>
+            <p class="modal-desc">Sitenize yeni otel ekleyin, fiyatları ve gerçek fotoğrafları yönetin.</p>
+            
+            <h3 style="font-size:15px; font-weight:800; margin-bottom:10px; color:#1e293b;">Yeni Otel Ekle</h3>
+            <form class="modal-form" onsubmit="handleAddNewHotel(event)">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                    <div>
+                        <label>Otel Adı</label>
+                        <input type="text" id="newHotelName" required placeholder="Örn: Elite Hotel">
+                    </div>
+                    <div>
+                        <label>Kategori</label>
+                        <select id="newHotelType">
+                            <option value="domestic">Yurt İçi</option>
+                            <option value="international">Yurt Dışı</option>
+                        </select>
+                    </div>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                    <div>
+                        <label>Şehir / Konum</label>
+                        <input type="text" id="newHotelLocation" required placeholder="Örn: İzmir / Çeşme">
+                    </div>
+                    <div>
+                        <label>Gecelik Fiyat (TL)</label>
+                        <input type="number" id="newHotelPrice" required placeholder="3500">
+                    </div>
+                </div>
+                <div>
+                    <label>Gerçek Otel Görsel URL (Unsplash veya Fotoğraf Linki)</label>
+                    <input type="url" id="newHotelImage" required placeholder="https://images.unsplash.com/...">
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                    <div>
+                        <label>Doluluk Durumu / Rozet</label>
+                        <input type="text" id="newHotelOccupancy" required placeholder="🔥 Son 2 Oda Kaldı!">
+                    </div>
+                    <div>
+                        <label>Puan</label>
+                        <input type="text" id="newHotelRating" required placeholder="9.5">
+                    </div>
+                </div>
+                <button type="submit" class="modal-btn" style="background:#7c3aed;">Sisteme Otel Ekle 🏨</button>
+            </form>
+
+            <h3 style="font-size:15px; font-weight:800; margin-top:20px; margin-bottom:10px; color:#1e293b;">Mevcut Tesis Listesi</h3>
+            <div style="max-height: 200px; overflow-y: auto;">
+                <table class="admin-table" id="adminHotelTable">
+                    <tr><th>Otel Adı</th><th>Şehir</th><th>Fiyat</th><th>İşlem</th></tr>
+                </table>
+            </div>
         </div>
     </div>
 
@@ -355,19 +376,19 @@
     </div>
 
     <script>
-        // Kapsamlı Otel Veritabanı ve Doluluk Rozetleri
-        const databaseHotels = [
-            { id: 1, type: "domestic", name: "Ardos Park Hotel", city: "Ankara", location: "Çankaya, Ankara", tag: "Şehir & İş Oteli", occupancy: "🔥 Son 2 Oda Kaldı!", rating: 9.4, pricePerNight: 2400, image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80", features: ["Ücretsiz Wi-Fi", "Kahvaltı Dahil", "Otopark"] },
-            { id: 2, type: "domestic", name: "Bodrum Luxury Resort & Spa", city: "Bodrum", location: "Yalıkavak, Bodrum", tag: "Lüks Tatil", occupancy: "⚡ Yoğun Talep Göruyor", rating: 9.6, pricePerNight: 4800, image: "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=600&q=80", features: ["Denize Sıfır", "Her Şey Dahil", "Spa Center"] },
-            { id: 3, type: "domestic", name: "Antalya Akdeniz Resort", city: "Antalya", location: "Lara, Antalya", tag: "Popüler Resort", occupancy: "🔥 %85 Dolu", rating: 9.1, pricePerNight: 3500, image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=600&q=80", features: ["Açık Havuz", "Açık Büfe", "Fitness"] },
-            { id: 4, type: "domestic", name: "Kapadokya Cave Suites", city: "Kapadokya", location: "Göreme, Nevşehir", tag: "Mağara Otel", occupancy: "⚡ Son 1 Oda Kaldi!", rating: 9.8, pricePerNight: 4200, image: "https://images.unsplash.com/photo-1641128324972-af3212f0f6bd?auto=format&fit=crop&w=600&q=80", features: ["Balon Manzarası", "Tarihi Doku", "Serpme Kahvaltı"] },
-            { id: 5, type: "domestic", name: "İstanbul Boğaz Manzara Hotel", city: "İstanbul", location: "Beşiktaş, İstanbul", tag: "Boğaz Manzaralı", occupancy: "🔥 Son 3 Oda Kaldı!", rating: 9.3, pricePerNight: 3900, image: "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?auto=format&fit=crop&w=600&q=80", features: ["Teras Restoran", "Vale Park", "Boğaz Manzarası"] },
+        // Başlangıç Otel Veritabanı (Gerçek Fotoğraflar ve Doluluk Oranlarıyla)
+        let databaseHotels = JSON.parse(localStorage.getItem('gezifix_hotels') || JSON.stringify([
+            { id: 1, type: "domestic", name: "Ardos Park Hotel", city: "Ankara", location: "Çankaya, Ankara", tag: "Şehir & İş Oteli", occupancy: "🔥 Son 2 Oda Kaldı!", rating: 9.4, pricePerNight: 2400, image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80", features: ["Ücretsiz Wi-Fi", "Kahvaltı Dahil", "Otopark"] },
+            { id: 2, type: "domestic", name: "Bodrum Luxury Resort & Spa", city: "Bodrum", location: "Yalıkavak, Bodrum", tag: "Lüks Tatil", occupancy: "⚡ Yoğun Talep Görüyor", rating: 9.6, pricePerNight: 4800, image: "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=800&q=80", features: ["Denize Sıfır", "Her Şey Dahil", "Spa Center"] },
+            { id: 3, type: "domestic", name: "Antalya Akdeniz Resort", city: "Antalya", location: "Lara, Antalya", tag: "Popüler Resort", occupancy: "🔥 %85 Dolu", rating: 9.1, pricePerNight: 3500, image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80", features: ["Açık Havuz", "Açık Büfe", "Fitness"] },
+            { id: 4, type: "domestic", name: "Kapadokya Cave Suites", city: "Kapadokya", location: "Göreme, Nevşehir", tag: "Mağara Otel", occupancy: "⚡ Son 1 Oda Kaldı!", rating: 9.8, pricePerNight: 4200, image: "https://images.unsplash.com/photo-1641128324972-af3212f0f6bd?auto=format&fit=crop&w=800&q=80", features: ["Balon Manzarası", "Tarihi Doku", "Serpme Kahvaltı"] },
+            { id: 5, type: "domestic", name: "İstanbul Boğaz Manzara Hotel", city: "İstanbul", location: "Beşiktaş, İstanbul", tag: "Boğaz Manzaralı", occupancy: "🔥 Son 3 Oda Kaldı!", rating: 9.3, pricePerNight: 3900, image: "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?auto=format&fit=crop&w=800&q=80", features: ["Teras Restoran", "Vale Park", "Boğaz Manzarası"] },
             
-            { id: 6, type: "international", name: "Paris Grand Hotel", city: "Paris", location: "Şehir Merkezi, Paris", tag: "Avrupa Rüyası", occupancy: "⚡ Popüler Tercih", rating: 9.5, pricePerNight: 6500, image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=600&q=80", features: ["Eyfel Manzaralı", "Lüks Mimari", "Kahvaltı"] },
-            { id: 7, type: "international", name: "Rome Colosseum Resort", city: "Roma", location: "Tarihi Merkez, Roma", tag: "Kültür Turu", occupancy: "🔥 Son 2 Oda Kaldı!", rating: 9.2, pricePerNight: 5400, image: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=600&q=80", features: ["Kolezyum Yakını", "İtalyan Mutfağı", "Wi-Fi"] },
-            { id: 8, type: "international", name: "Amsterdam Canal View Hotel", city: "Amsterdam", location: "Kanal Bölgesi, Amsterdam", tag: "Butik Deneyim", occupancy: "⚡ Yoğun Talep", rating: 9.4, pricePerNight: 5900, image: "https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?auto=format&fit=crop&w=600&q=80", features: ["Kanal Manzarası", "Bisiklet Kiralama", "Bar"] },
-            { id: 9, type: "international", name: "London Prestige Hotel", city: "Londra", location: "Westminster, Londra", tag: "Prestij Konaklama", occupancy: "🔥 Son Oda!", rating: 9.6, pricePerNight: 7200, image: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=600&q=80", features: ["Merkezi Konum", "Fitness Center", "Özel Servis"] }
-        ];
+            { id: 6, type: "international", name: "Paris Grand Hotel", city: "Paris", location: "Şehir Merkezi, Paris", tag: "Avrupa Rüyası", occupancy: "⚡ Popüler Tercih", rating: 9.5, pricePerNight: 6500, image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=800&q=80", features: ["Eyfel Manzaralı", "Lüks Mimari", "Kahvaltı"] },
+            { id: 7, type: "international", name: "Rome Colosseum Resort", city: "Roma", location: "Tarihi Merkez, Roma", tag: "Kültür Turu", occupancy: "🔥 Son 2 Oda Kaldı!", rating: 9.2, pricePerNight: 5400, image: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=800&q=80", features: ["Kolezyum Yakını", "İtalyan Mutfağı", "Wi-Fi"] },
+            { id: 8, type: "international", name: "Amsterdam Canal View Hotel", city: "Amsterdam", location: "Kanal Bölgesi, Amsterdam", tag: "Butik Deneyim", occupancy: "⚡ Yoğun Talep", rating: 9.4, pricePerNight: 5900, image: "https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?auto=format&fit=crop&w=800&q=80", features: ["Kanal Manzarası", "Bisiklet Kiralama", "Bar"] },
+            { id: 9, type: "international", name: "London Prestige Hotel", city: "Londra", location: "Westminster, Londra", tag: "Prestij Konaklama", occupancy: "🔥 Son Oda!", rating: 9.6, pricePerNight: 7200, image: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=800&q=80", features: ["Merkezi Konum", "Fitness Center", "Özel Servis"] }
+        ]));
 
         let currentTab = 'domestic';
         let selectedHotelForBooking = null;
@@ -383,7 +404,8 @@
             checkout.value = tomorrow.toISOString().split('T')[0];
 
             const savedUser = localStorage.getItem('gezifix_user_name');
-            if(savedUser) showLoggedInUser(savedUser);
+            const savedEmail = localStorage.getItem('gezifix_user_email');
+            if(savedUser) showLoggedInUser(savedUser, savedEmail);
 
             filterAndRenderHotels();
         });
@@ -465,7 +487,7 @@
                                 <span class="hotel-rating">★ ${hotel.rating}</span>
                             </div>
                             <div class="hotel-features">
-                                ${hotel.features.map(f => `<span class="feature-chip">${f}</span>`).join('')}
+                                ${hotel.features ? hotel.features.map(f => `<span class="feature-chip">${f}</span>`).join('') : ''}
                             </div>
                         </div>
                         <div class="hotel-bottom">
@@ -480,6 +502,59 @@
                 `;
                 container.appendChild(card);
             });
+        }
+
+        // Yönetici Paneli Fonksiyonları
+        function openAdminModal() {
+            document.getElementById('userDropdown').classList.remove('active');
+            renderAdminTable();
+            openModal('adminModal');
+        }
+
+        function renderAdminTable() {
+            const table = document.getElementById('adminHotelTable');
+            table.innerHTML = `<tr><th>Otel Adı</th><th>Şehir</th><th>Fiyat</th><th>İşlem</th></tr>`;
+            databaseHotels.forEach(h => {
+                table.innerHTML += `
+                    <tr>
+                        <td><strong>${h.name}</strong></td>
+                        <td>${h.city}</td>
+                        <td>₺${h.pricePerNight}</td>
+                        <td><button onclick="deleteHotel(${h.id})" style="background:#ef4444; color:#fff; border:none; padding:4px 8px; border-radius:4px; cursor:pointer;">Sil</button></td>
+                    </tr>
+                `;
+            });
+        }
+
+        function handleAddNewHotel(event) {
+            event.preventDefault();
+            const newHotel = {
+                id: Date.now(),
+                type: document.getElementById('newHotelType').value,
+                name: document.getElementById('newHotelName').value,
+                city: document.getElementById('newHotelLocation').value.split('/')[0].trim(),
+                location: document.getElementById('newHotelLocation').value,
+                tag: "Yeni Tesis",
+                occupancy: document.getElementById('newHotelOccupancy').value,
+                rating: document.getElementById('newHotelRating').value,
+                pricePerNight: parseInt(document.getElementById('newHotelPrice').value),
+                image: document.getElementById('newHotelImage').value,
+                features: ["Ücretsiz Wi-Fi", "Kahvaltı", "Özel Otopark"]
+            };
+
+            databaseHotels.push(newHotel);
+            localStorage.setItem('gezifix_hotels', JSON.stringify(databaseHotels));
+            renderAdminTable();
+            filterAndRenderHotels();
+            alert('Yeni otel başarıyla eklendi ve yayına alındı!');
+            event.target.reset();
+        }
+
+        function deleteHotel(id) {
+            databaseHotels = databaseHotels.filter(h => h.id !== id);
+            localStorage.setItem('gezifix_hotels', JSON.stringify(databaseHotels));
+            renderAdminTable();
+            filterAndRenderHotels();
         }
 
         function toggleFavorite(hotelId) {
@@ -575,12 +650,12 @@
 
         function handleAuthSubmit(event, type) {
             event.preventDefault();
-            const userName = type === 'register' ? document.getElementById('regName').value : "Ahmet Y.";
-            const userEmail = type === 'register' ? document.getElementById('regEmail').value : "ornek@mail.com";
+            const email = type === 'register' ? document.getElementById('regEmail').value : document.getElementById('loginEmail').value;
+            const userName = type === 'register' ? document.getElementById('regName').value : email.split('@')[0];
             
             localStorage.setItem('gezifix_user_name', userName);
-            localStorage.setItem('gezifix_user_email', userEmail);
-            showLoggedInUser(userName);
+            localStorage.setItem('gezifix_user_email', email);
+            showLoggedInUser(userName, email);
             closeModal('loginModal');
             closeModal('registerModal');
         }
@@ -592,17 +667,23 @@
             if(newName) {
                 localStorage.setItem('gezifix_user_name', newName);
                 localStorage.setItem('gezifix_user_email', newEmail);
-                showLoggedInUser(newName);
+                showLoggedInUser(newName, newEmail);
                 alert('Profil güncellendi!');
                 closeModal('profileModal');
             }
         }
 
-        function showLoggedInUser(name) {
+        function showLoggedInUser(name, email) {
             document.getElementById('authButtons').style.display = 'none';
             document.getElementById('userMenuContainer').style.display = 'block';
             document.getElementById('displayName').textContent = name;
             document.getElementById('avatarLetter').textContent = name.charAt(0).toUpperCase();
+
+            // Eğer e-posta admin ise Yönetici Paneli butonunu göster
+            if(email && email.toLowerCase() === 'admin@gezifix.tr') {
+                document.getElementById('adminPanelBtn').style.display = 'flex';
+                document.getElementById('adminMenuDivider').style.display = 'block';
+            }
         }
 
         function logoutUser() {
@@ -610,6 +691,8 @@
             localStorage.removeItem('gezifix_user_email');
             document.getElementById('authButtons').style.display = 'flex';
             document.getElementById('userMenuContainer').style.display = 'none';
+            document.getElementById('adminPanelBtn').style.display = 'none';
+            document.getElementById('adminMenuDivider').style.display = 'none';
         }
     </script>
 </body>
