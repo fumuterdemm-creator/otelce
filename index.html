@@ -3,102 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>gezifix.tr — Next-Gen Seyahat & Otel Portalı</title>
+    <title>Gezifix.tr — Next-Gen Seyahat Portalı</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=Permanent+Marker&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #6366f1;
-            --primary-hover: #4f46e5;
-            --accent: #06b6d4;
-            --bg: #0f172a;
-            --card-bg: #1e293b;
-            --text-main: #f8fafc;
-            --text-sub: #94a3b8;
-            --border: #334155;
-            --gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+            --primary: #8b5cf6;
+            --neon-pink: #f43f5e;
+            --neon-cyan: #06b6d4;
+            --neon-green: #10b981;
+            --bg-dark: #07090e;
+            --card-bg: #131b2e;
+            --border: #1e293b;
+            --gradient-main: linear-gradient(135deg, #f43f5e 0%, #8b5cf6 50%, #06b6d4 100%);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
-        body { background-color: #0b0f19; color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; }
+        body { background-color: var(--bg-dark); color: #f8fafc; min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; overflow-x: hidden; }
 
-        /* Modern Glass Header */
-        header { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 16px 32px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 50; }
-        .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-        .logo-box { width: 44px; height: 44px; background: var(--gradient); border-radius: 14px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 22px; font-weight: 900; box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4); }
-        .logo-text { font-size: 24px; font-weight: 900; color: #fff; letter-spacing: -0.5px; }
-        .logo-text span { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .logo-badge { background: #22c55e; color: #000; font-size: 10px; font-weight: 900; padding: 2px 8px; border-radius: 20px; text-transform: uppercase; margin-left: 4px; }
+        /* Header & Graffiti Logo */
+        header { background: rgba(7, 9, 14, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 16px 32px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 50; }
+        
+        .logo { display: flex; align-items: center; gap: 4px; text-decoration: none; }
+        .logo-main { font-size: 26px; font-weight: 900; letter-spacing: -1px; background: var(--gradient-main); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-style: italic; }
+        .logo-tr { background: #e11d48; color: #fff; font-family: 'Permanent Marker', cursive, sans-serif; font-size: 16px; padding: 2px 8px; border-radius: 6px; transform: rotate(3deg); box-shadow: 0 0 15px rgba(225, 29, 72, 0.6); display: inline-flex; align-items: center; gap: 3px; margin-left: 2px; }
+        .logo-tr span { font-size: 11px; }
 
         .auth-btns { display: flex; gap: 12px; align-items: center; }
-        .btn-ghost { background: transparent; color: var(--text-main); border: 1px solid var(--border); padding: 10px 18px; border-radius: 12px; font-size: 14px; font-weight: 700; cursor: pointer; transition: 0.2s; }
-        .btn-ghost:hover { border-color: var(--primary); color: var(--primary); }
-        .btn-glow { background: var(--gradient); color: #fff; border: none; padding: 10px 22px; border-radius: 12px; font-size: 14px; font-weight: 800; cursor: pointer; box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4); transition: 0.2s; }
-        .btn-glow:hover { transform: translateY(-1px); box-shadow: 0 6px 25px rgba(168, 85, 247, 0.6); }
+        .btn-ghost { background: transparent; color: #f8fafc; border: 1px solid var(--border); padding: 10px 18px; border-radius: 12px; font-size: 14px; font-weight: 700; cursor: pointer; transition: 0.2s; }
+        .btn-ghost:hover { border-color: var(--neon-cyan); color: var(--neon-cyan); }
+        .btn-glow { background: var(--gradient-main); color: #fff; border: none; padding: 10px 22px; border-radius: 12px; font-size: 14px; font-weight: 800; cursor: pointer; box-shadow: 0 4px 20px rgba(244, 63, 94, 0.4); transition: 0.2s; }
+        .btn-glow:hover { transform: translateY(-1px); box-shadow: 0 6px 25px rgba(6, 182, 212, 0.6); }
 
         /* Main Container */
         main { max-width: 1150px; margin: 0 auto; width: 100%; padding: 40px 16px; flex-grow: 1; }
 
         /* Sekmeler */
         .tab-bar { display: flex; gap: 8px; margin-bottom: 20px; }
-        .tab-item { background: #1e293b; border: 1px solid var(--border); color: var(--text-sub); padding: 12px 24px; border-radius: 14px; font-weight: 700; font-size: 14px; cursor: pointer; transition: 0.2s; }
-        .tab-item.active { background: var(--gradient); color: #fff; border: none; box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3); }
+        .tab-item { background: var(--card-bg); border: 1px solid var(--border); color: #94a3b8; padding: 12px 24px; border-radius: 14px; font-weight: 700; font-size: 14px; cursor: pointer; transition: 0.2s; }
+        .tab-item.active { background: var(--gradient-main); color: #fff; border: none; box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4); }
 
-        /* Enuygun Tarzı Hero Card & Form */
-        .hero-section { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(16px); border: 1px solid var(--border); border-radius: 28px; padding: 36px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); margin-bottom: 40px; }
+        /* Hero Section */
+        .hero-section { background: rgba(19, 27, 46, 0.7); backdrop-filter: blur(16px); border: 1px solid var(--border); border-radius: 28px; padding: 36px; box-shadow: 0 20px 40px rgba(0,0,0,0.4); margin-bottom: 40px; position: relative; overflow: hidden; }
+        .hero-section::before { content: ''; position: absolute; top: -50px; right: -50px; width: 200px; height: 200px; background: rgba(244, 63, 94, 0.15); filter: blur(60px); border-radius: 50%; pointer-events: none; }
+        
         .hero-title { font-size: 32px; font-weight: 900; margin-bottom: 8px; letter-spacing: -0.5px; }
-        .hero-subtitle { color: var(--text-sub); font-size: 15px; margin-bottom: 28px; }
+        .hero-title span { background: var(--gradient-main); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-subtitle { color: #94a3b8; font-size: 15px; margin-bottom: 28px; }
 
         /* Search Form Grid */
-        .search-grid { display: grid; grid-template-columns: 2.2fr 1.2fr 1.2fr 1fr 1fr; gap: 10px; background: #0f172a; padding: 12px; border-radius: 20px; border: 1px solid var(--border); }
+        .search-grid { display: grid; grid-template-columns: 2.2fr 1.2fr 1.2fr 1fr 1fr; gap: 10px; background: #07090e; padding: 12px; border-radius: 20px; border: 1px solid var(--border); }
         @media (max-width: 900px) { .search-grid { grid-template-columns: 1fr 1fr; } }
         @media (max-width: 600px) { .search-grid { grid-template-columns: 1fr; } }
 
-        .field-box { display: flex; flex-direction: column; padding: 8px 12px; background: #1e293b; border-radius: 14px; border: 1px solid transparent; transition: 0.2s; }
-        .field-box:focus-within { border-color: var(--primary); background: #182234; }
-        .field-box label { font-size: 10px; font-weight: 800; color: var(--accent); text-transform: uppercase; margin-bottom: 4px; letter-spacing: 0.5px; }
+        .field-box { display: flex; flex-direction: column; padding: 8px 12px; background: var(--card-bg); border-radius: 14px; border: 1px solid transparent; transition: 0.2s; }
+        .field-box:focus-within { border-color: var(--neon-cyan); background: #1a253a; }
+        .field-box label { font-size: 10px; font-weight: 800; color: var(--neon-cyan); text-transform: uppercase; margin-bottom: 4px; letter-spacing: 0.5px; }
         .field-box input, .field-box select { background: transparent; border: none; color: #fff; font-size: 13px; font-weight: 700; outline: none; width: 100%; }
 
-        .btn-search-main { background: var(--gradient); color: #fff; font-size: 16px; font-weight: 900; padding: 18px; border-radius: 16px; border: none; cursor: pointer; width: 100%; margin-top: 14px; box-shadow: 0 6px 20px rgba(168, 85, 247, 0.4); transition: 0.2s; }
-        .btn-search-main:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(236, 72, 153, 0.5); }
+        .btn-search-main { background: var(--gradient-main); color: #fff; font-size: 16px; font-weight: 900; padding: 18px; border-radius: 16px; border: none; cursor: pointer; width: 100%; margin-top: 14px; box-shadow: 0 6px 25px rgba(244, 63, 94, 0.4); transition: 0.2s; }
+        .btn-search-main:hover { transform: translateY(-2px); box-shadow: 0 8px 35px rgba(6, 182, 212, 0.6); }
 
         /* Otel Kartları */
-        .hotel-card { background: #1e293b; border-radius: 24px; border: 1px solid var(--border); overflow: hidden; display: grid; grid-template-columns: 320px 1fr; margin-bottom: 20px; transition: 0.2s; }
-        .hotel-card:hover { border-color: var(--primary); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
+        .hotel-card { background: var(--card-bg); border-radius: 24px; border: 1px solid var(--border); overflow: hidden; display: grid; grid-template-columns: 320px 1fr; margin-bottom: 20px; transition: 0.2s; }
+        .hotel-card:hover { border-color: var(--neon-pink); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
         @media (max-width: 768px) { .hotel-card { grid-template-columns: 1fr; } }
 
         .hotel-media { position: relative; height: 100%; min-height: 220px; }
         .hotel-media img { width: 100%; height: 100%; object-fit: cover; }
-        .badge-tag { position: absolute; top: 12px; left: 12px; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(8px); color: var(--accent); font-size: 11px; font-weight: 800; padding: 6px 12px; border-radius: 10px; border: 1px solid var(--border); }
-        .badge-live { position: absolute; bottom: 12px; left: 12px; background: #ef4444; color: #fff; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 8px; }
+        .badge-tag { position: absolute; top: 12px; left: 12px; background: rgba(7, 9, 14, 0.85); backdrop-filter: blur(8px); color: var(--neon-cyan); font-size: 11px; font-weight: 800; padding: 6px 12px; border-radius: 10px; border: 1px solid var(--border); }
+        .badge-live { position: absolute; bottom: 12px; left: 12px; background: var(--neon-pink); color: #fff; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 8px; box-shadow: 0 0 10px rgba(244,63,94,0.6); }
 
         .hotel-details { padding: 24px; display: flex; flex-direction: column; justify-content: space-between; }
         .hotel-name { font-size: 20px; font-weight: 900; color: #fff; margin-bottom: 4px; }
-        .hotel-loc { font-size: 13px; color: var(--text-sub); }
+        .hotel-loc { font-size: 13px; color: #94a3b8; }
         .hotel-chips { display: flex; gap: 8px; margin: 14px 0; flex-wrap: wrap; }
-        .chip { background: #0f172a; color: var(--text-sub); font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 8px; border: 1px solid var(--border); }
+        .chip { background: #07090e; color: #94a3b8; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 8px; border: 1px solid var(--border); }
 
         .hotel-price-row { display: flex; justify-content: space-between; align-items: flex-end; border-top: 1px solid var(--border); padding-top: 16px; margin-top: 14px; }
         .price-val { font-size: 26px; font-weight: 900; color: #38bdf8; }
 
-        /* Modal Overlay & Enuygun Style Auth */
-        .modal-overlay { position: fixed; inset: 0; background: rgba(11, 15, 25, 0.8); backdrop-filter: blur(10px); display: none; align-items: center; justify-content: center; z-index: 100; padding: 16px; }
+        /* Modal Overlay */
+        .modal-overlay { position: fixed; inset: 0; background: rgba(7, 9, 14, 0.85); backdrop-filter: blur(10px); display: none; align-items: center; justify-content: center; z-index: 100; padding: 16px; }
         .modal-overlay.active { display: flex !important; }
         
-        .auth-modal-box { background: #1e293b; width: 100%; max-width: 800px; border-radius: 28px; border: 1px solid var(--border); overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; box-shadow: 0 25px 50px rgba(0,0,0,0.5); position: relative; }
+        .auth-modal-box { background: var(--card-bg); width: 100%; max-width: 800px; border-radius: 28px; border: 1px solid var(--border); overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; box-shadow: 0 25px 50px rgba(0,0,0,0.6); position: relative; }
         @media (max-width: 650px) { .auth-modal-box { grid-template-columns: 1fr; } }
 
-        .auth-left { background: var(--gradient); padding: 40px; display: flex; flex-direction: column; justify-content: space-between; color: #fff; }
+        .auth-left { background: var(--gradient-main); padding: 40px; display: flex; flex-direction: column; justify-content: space-between; color: #fff; }
         .auth-right { padding: 40px; position: relative; }
-        .modal-close-btn { position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 20px; color: var(--text-sub); cursor: pointer; }
+        .modal-close-btn { position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 20px; color: #94a3b8; cursor: pointer; }
 
         .form-group { margin-bottom: 16px; }
-        .form-group label { display: block; font-size: 12px; font-weight: 800; color: var(--text-sub); margin-bottom: 6px; }
-        .form-group input { width: 100%; padding: 12px 14px; background: #0f172a; border: 1px solid var(--border); border-radius: 12px; color: #fff; outline: none; font-size: 14px; }
-        .form-group input:focus { border-color: var(--primary); }
+        .form-group label { display: block; font-size: 12px; font-weight: 800; color: #94a3b8; margin-bottom: 6px; }
+        .form-group input { width: 100%; padding: 12px 14px; background: #07090e; border: 1px solid var(--border); border-radius: 12px; color: #fff; outline: none; font-size: 14px; }
+        .form-group input:focus { border-color: var(--neon-cyan); }
 
-        footer { background: #0f172a; border-top: 1px solid var(--border); padding: 24px; text-align: center; font-size: 13px; color: var(--text-sub); margin-top: 40px; }
+        footer { background: #07090e; border-top: 1px solid var(--border); padding: 24px; text-align: center; font-size: 13px; color: #94a3b8; margin-top: 40px; }
     </style>
 </head>
 <body>
@@ -106,11 +108,8 @@
     <!-- Header -->
     <header>
         <a href="/" class="logo">
-            <div class="logo-box">GF</div>
-            <div>
-                <span class="logo-text">gezi<span>.fix</span></span>
-                <span class="logo-badge">Z-PASS</span>
-            </div>
+            <span class="logo-main">GeziFix</span>
+            <div class="logo-tr">🇹🇷 <span>TR</span></div>
         </a>
 
         <div class="auth-btns">
@@ -121,16 +120,14 @@
 
     <!-- Main -->
     <main>
-        <!-- Sekmeler -->
         <div class="tab-bar">
             <button class="tab-item active" onclick="switchTab('domestic', this)">🇹🇷 Yurt İçi Oteller</button>
             <button class="tab-item" onclick="switchTab('international', this)">🌍 Yurt Dışı Oteller</button>
         </div>
 
-        <!-- Enuygun Tarzı Hero Section -->
         <div class="hero-section">
-            <h1 class="hero-title">Bütçene En Uygun Oteli Yakala ✨</h1>
-            <p class="hero-subtitle">Komisyon yok, canlı fiyat takibi ve anlık doluluk oranlarıyla güvenli rezervasyon.</p>
+            <h1 class="hero-title">Bütçene En Uygun Oteli <span>Yakala</span> ✨</h1>
+            <p class="hero-subtitle">Canlı doluluk oranları, neon tarzı arayüz ve komisyonsuz seyahat deneyimi.</p>
 
             <form onsubmit="handleSearch(event)">
                 <div class="search-grid">
@@ -163,11 +160,10 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn-search-main">Otelleri Listele & Karşılaştır ⚡</button>
+                <button type="submit" class="btn-search-main">Otelleri Listele & Fiyatları Gör ⚡</button>
             </form>
         </div>
 
-        <!-- Otel Listesi -->
         <div id="hotelsContainer"></div>
     </main>
 
@@ -175,16 +171,16 @@
         &copy; 2026 Gezifix.tr — Next-Gen Seyahat Portalı. Tüm hakları saklıdır.
     </footer>
 
-    <!-- Enuygun Style Giriş & Üyelik Modalı -->
+    <!-- Auth Modal -->
     <div id="authModal" class="modal-overlay">
         <div class="auth-modal-box">
             <div class="auth-left">
                 <div>
-                    <h2>Gezifix'e Hoş Geldin! 🎉</h2>
-                    <p style="margin-top: 10px; font-size: 14px; opacity: 0.9;">Üye olarak özel indirimlerden faydalan, rezervasyonlarını tek tıkla yönet.</p>
+                    <h2>Gezifix.tr'ye Katıl! 🔥</h2>
+                    <p style="margin-top: 10px; font-size: 14px; opacity: 0.9;">Z kuşağına özel seyahat fırsatları ve hızlı rezervasyon yönetimi.</p>
                 </div>
                 <div>
-                    <p style="font-size: 12px; opacity: 0.8;">⚡ %100 Güvenli Altyapı</p>
+                    <p style="font-size: 12px; opacity: 0.8;">⚡ Güvenli Ortaklık Altyapısı</p>
                 </div>
             </div>
             <div class="auth-right">
@@ -199,7 +195,7 @@
                         <label>Şifre</label>
                         <input type="password" required placeholder="••••••••">
                     </div>
-                    <button type="submit" class="btn-glow" style="width:100%; padding:14px; margin-top:10px;">Devam Et 🔥</button>
+                    <button type="submit" class="btn-glow" style="width:100%; padding:14px; margin-top:10px;">Devam Et 🚀</button>
                 </form>
             </div>
         </div>
@@ -252,7 +248,7 @@
                             </div>
                             <div class="hotel-price-row">
                                 <div>
-                                    <span style="font-size:11px; color:var(--text-sub);">Gecelik Fiyat</span>
+                                    <span style="font-size:11px; color:#94a3b8;">Gecelik Fiyat</span>
                                     <div class="price-val">₺${h.price.toLocaleString('tr-TR')}</div>
                                 </div>
                                 <button onclick="openModal('authModal')" class="btn-glow">Rezervasyon Yap 🚀</button>
